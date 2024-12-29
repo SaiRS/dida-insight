@@ -9,19 +9,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Install required dependencies
-        run: |
-          apt update
-          apt install -y sudo
-          sudo apt install -y git curl
-          curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-          sudo DEBIAN_FRONTEND=noninteractive apt install -y nodejs
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # 指定 Node.js 版本
+
       - name: Print versions
         run: |
-          git --version
           node --version
           npm --version
-          npx commitlint --version
+
       - name: Install commitlint
         run: npm install
 
