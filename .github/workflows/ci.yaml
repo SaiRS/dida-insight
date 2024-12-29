@@ -24,7 +24,7 @@ jobs:
           npm --version
 
       - name: Install commitlint
-        run: npm install
+        run: pnpm install
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
